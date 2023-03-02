@@ -82,7 +82,7 @@ public class Matriz2 {
      * @param limiteSuperio Es el segundo campo a comparar.
      * @return Regresa verdadero si son iguales, falso en caso contrario.
      */
-        private boolean validarRango(int indice,int limiteSuperio){
+        public boolean validarRango(int indice,int limiteSuperio){
             if (indice>=0 && indice<limiteSuperio){
                 return true;
             }else {
@@ -227,10 +227,12 @@ public class Matriz2 {
      */
     public  boolean redefinir(Matriz2 matriz2){
 
-        new Matriz2(matriz2.getRenglones(), matriz2.getColumnas());
+        columnas = matriz2.getColumnas();
+        renglones = matriz2.getRenglones();
+        informacion = new Object[renglones][columnas];
         for(int cadaRenglon = 0; cadaRenglon < getRenglones(); cadaRenglon++){
             for(int cadaColumna = 0; cadaColumna < getColumnas(); cadaColumna++){
-                cambiar(cadaRenglon, cadaColumna, matriz2.obtener(cadaRenglon, cadaColumna));
+                informacion[cadaRenglon][ cadaColumna]= matriz2.obtener(cadaRenglon, cadaColumna);
             }
         }
         return true;
@@ -451,6 +453,7 @@ public class Matriz2 {
         }
         return false;
     }
+
 
 
 }
